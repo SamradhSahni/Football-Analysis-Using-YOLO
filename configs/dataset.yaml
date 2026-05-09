@@ -1,0 +1,24 @@
+# ============================================================
+# Football Tracker — YOLO Training Dataset Config (v2)
+# Task 1.3 — Improved training with full SoccerNet dataset
+# ============================================================
+
+# Absolute root path to avoid path resolution issues during training
+# Change this if your project is on a different drive
+path: E:/projects/Football_YOLO_Analysis/football_tracker/data
+
+# Split paths (relative to 'path')
+train: soccernet/tracking/train
+val:   soccernet/tracking/test
+test:  soccernet/tracking/test
+
+# Number of classes
+nc: 4
+
+# Class names — MUST match order used in annotation
+# class_id: 0=player, 1=goalkeeper, 2=referee, 3=ball
+names:
+  0: player
+  1: goalkeeper
+  2: referee
+  3: ball

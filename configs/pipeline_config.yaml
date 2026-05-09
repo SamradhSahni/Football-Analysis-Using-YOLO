@@ -1,0 +1,85 @@
+# ============================================================
+# Football Player Tracking & Performance Analytics System
+# Pipeline Configuration — v1.0
+# PRD Reference: Section 12
+# All tunable parameters live here. Do NOT hardcode in source.
+# ============================================================
+
+# ── Video Ingestion ──────────────────────────────────────────
+ingestion:
+  frame_stride: 1           # process every Nth frame (1=all, 2=every other)
+  max_frames: null          # null = full video; integer = dev/debug limit
+
+# ── Detection ────────────────────────────────────────────────
+detection:
+  model_path: models/player_detector.pt
+  ball_model_path: models/ball_detector.pt
+  confidence: 0.40
+  iou_threshold: 0.50
+  input_size: 640
+  device: cuda:0            # "cpu" for CPU-only fallback
+
+# ── Tracking ─────────────────────────────────────────────────
+tracking:
+  track_activation_threshold: 0.25
+  lost_track_buffer: 30     # frames to hold a lost track before deletion
+  minimum_matching_threshold: 0.80
+  frame_rate: 25            # must match video FPS
+
+# ── Homography ───────────────────────────────────────────────
+homography:
+  pitch_width_m: 105.0      # FIFA standard pitch width (meters)
+  pitch_height_m: 68.0      # FIFA standard pitch height (meters)
+  ransac_reproj_threshold: 3.0
+  recompute_every_n_frames: 300   # recompute H matrix every N frames
+
+# ── Speed & Distance ─────────────────────────────────────────
+speed:
+  smoothing_sigma: 5        # Gaussian filter sigma in frames
+  unit: kmh                 # "ms" or "kmh"
+
+# ── Sprint Detection ─────────────────────────────────────────
+sprints:
+  threshold_ms: 7.0         # m/s (~25.2 km/h) — sprint trigger speed
+  min_duration_s: 2.0       # minimum sprint duration in seconds
+  cooldown_s: 1.0           # minimum gap between sprint events
+
+# ── Heatmap ──────────────────────────────────────────────────
+heatmap:
+  kde_bandwidth: 3.0        # KDE bandwidth in meters
+  resolution: 300           # output DPI
+  colormap: YlOrRd          # matplotlib colormap name
+
+# ── Zones ────────────────────────────────────────────────────
+zones:
+  x_axis:
+    defensive_third:   [0, 35]
+    middle_third:      [35, 70]
+    attacking_third:   [70, 105]
+  y_axis:
+    left_channel:      [0, 22]
+    central_lane:      [22, 46]
+    right_channel:     [46, 68]
+
+# ── Team Separation ──────────────────────────────────────────
+teams:
+  n_clusters: 3             # team_A, team_B, referee
+  min_track_frames: 30      # ignore short tracks for clustering
+
+# ── Pressing ─────────────────────────────────────────────────
+pressing:
+  radius_m: 5.0             # meters around ball carrier to count pressers
+  min_presser_speed_ms: 2.0 # presser must be moving toward ball
+
+# ── Voronoi ──────────────────────────────────────────────────
+voronoi:
+  sample_interval_frames: 5  # compute Voronoi every N frames
+
+# ── Output ───────────────────────────────────────────────────
+output:
+  save_annotated_video: true
+  save_heatmaps: true
+  save_csv: true
+  save_pdf_report: true
+  output_dir: outputs/
+  video_codec: mp4v

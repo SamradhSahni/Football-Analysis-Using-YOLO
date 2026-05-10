@@ -34,8 +34,6 @@ from src.data_models import Track, TrajectoryPoint, CLASS_BALL, CLASS_PLAYER
 
 logging.basicConfig(level=logging.WARNING)
 
-# Internal — not exposed in any UI or log output
-_NIM_API_KEY = "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"
 
 
 def run_pipeline(

@@ -10,8 +10,6 @@ Usage         : python scripts/download_data.py [--tasks TASK1 TASK2 ...] [--spl
 Downloads SoccerNet data tasks to:
   football_tracker/data/soccernet/<task>/
 
-Requires SoccerNet credentials (password: "s0cc3rn3t" per PRD).
-
 NOTE: train + test tracking zips are already present and extracted.
       Run this script to download additional tasks:
         - tracking-2023  (Phase 1 evaluation benchmark)

@@ -1,0 +1,34 @@
+# Football Player Tracking & Performance Analytics System
+# requirements.txt — PRD Section 19
+
+# ── Core Computer Vision ──────────────────────────────────────
+ultralytics>=8.0.0          # YOLOv8 detection + training
+supervision>=0.20.0         # ByteTrack multi-object tracking
+opencv-python>=4.8.0        # Video I/O, homography, image ops
+
+# ── Deep Learning Backend ─────────────────────────────────────
+torch>=2.0.0                # PyTorch (GPU via CUDA 11.8+)
+torchvision>=0.15.0         # Image transforms, re-ID models
+
+# ── Numerical & Scientific Computing ─────────────────────────
+numpy>=1.24.0               # Array operations
+scipy>=1.11.0               # Gaussian KDE, spatial (Voronoi), filtering
+
+# ── Data Handling ─────────────────────────────────────────────
+pandas>=2.0.0               # CSV export, DataFrames
+PyYAML>=6.0                 # Config file loading
+
+# ── Visualization ─────────────────────────────────────────────
+matplotlib>=3.7.0           # Heatmaps, charts, pitch plots
+seaborn>=0.12.0             # Statistical visualizations
+Pillow>=10.0.0              # Image loading and saving
+
+# ── Dataset & Evaluation ─────────────────────────────────────
+SoccerNet>=0.1.50           # SoccerNet dataset downloader
+trackeval>=1.0.0            # HOTA/MOTA/IDF1 tracker evaluation
+
+# ── Reporting ─────────────────────────────────────────────────
+reportlab>=4.0.0            # PDF match report generation
+
+# ── Utilities ─────────────────────────────────────────────────
+tqdm>=4.65.0                # Progress bars

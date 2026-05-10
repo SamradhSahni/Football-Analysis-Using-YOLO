@@ -1,22 +1,3 @@
-"""
-scripts/download_data.py
-========================
-SoccerNet dataset download helper.
-
-PRD Reference : Section 5.1
-Usage         : python scripts/download_data.py [--tasks TASK1 TASK2 ...] [--splits SPLIT ...]
-                python scripts/download_data.py --help
-
-Downloads SoccerNet data tasks to:
-  football_tracker/data/soccernet/<task>/
-
-NOTE: train + test tracking zips are already present and extracted.
-      Run this script to download additional tasks:
-        - tracking-2023  (Phase 1 evaluation benchmark)
-        - calibration    (Task 1.5 — homography validation)
-        - ball-2024      (Phase 2 — GOAL-20)
-        - action_spotting (Phase 2 — GOAL-19)
-"""
 
 import argparse
 import os
